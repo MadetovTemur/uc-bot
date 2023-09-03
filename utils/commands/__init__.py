@@ -1,0 +1,2 @@
+from .command_admin import set_commands_admin
+from .command_user import set_default_commands
