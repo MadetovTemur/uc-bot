@@ -2,3 +2,4 @@
 from .db_api import DataBazeTelegram
 
 from . import commands
+from . import misc

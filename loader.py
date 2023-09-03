@@ -2,9 +2,9 @@
 
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from .utils.db_api import DataBazeTelegram
+from utils.db_api import DataBazeTelegram
 import asyncio
-from .data import TOKEN, ADMINS
+from data import TOKEN, ADMINS
 
 
 

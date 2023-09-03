@@ -4,7 +4,7 @@ from aiogram import executor
 
 from loader import dp, db
 import middlewares, filters, handlers
-from .utils import commands
+from utils import commands
 from utils.notify_admins import (on_startup_notify, on_shutdown_notify)
 
 
