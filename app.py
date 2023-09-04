@@ -10,7 +10,7 @@ from utils.notify_admins import (on_startup_notify, on_shutdown_notify)
 
 
 async def on_startup(dispatcher):
-    db.create_tables()
+    # db.create_tables()
 
     # Устанавливаем дефолтные команды
     await commands.set_default_commands(dispatcher)

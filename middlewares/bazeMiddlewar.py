@@ -1,19 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from aiogram.dispatcher.middlewares import BaseMiddleware
-from aiogram.types import Message
+from aiogram import types
 
+from loader import db
 
-class CounterMiddleware(BaseMiddleware):
-    def __init__(self) -> None:
-        self.counter = 0
+class UpdateUserDict(BaseMiddleware):
 
-    async def __call__(
-        self,
-        handler: Callable[[Message, Dict[str, Any]], Awaitable[Any]],
-        event: Message,
-        data: Dict[str, Any]
-    ) -> Any:
-        self.counter += 1
-        data['counter'] = self.counter
-        return await handler(event, data)
+    async def on_process_message(self, msg: types.Message, data:dict):
+      if msg.chat.type == 'private':
+        db.add_new_user(msg.from_user.id, msg.from_user.username)

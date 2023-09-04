@@ -28,4 +28,4 @@ async def set_default_commands(dp: Dispatcher):
 			description='Bot xaqida malumotlar.'
 		)
 	]
-	await dp.bot.set_my_commands(commands=command,  scope=BotCommandScopeDefault(), language_code='uz')
+	await dp.bot.set_my_commands(commands=command,  scope=BotCommandScopeDefault())

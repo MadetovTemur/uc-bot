@@ -40,4 +40,4 @@ async def set_commands_admin(dp: Dispatcher):
 			description='Информатия о боте.'
 		)
 	]
-	await dp.bot.set_my_commands(commands=command,  scope= BotCommandScopeDefault(), language_code='ru')
+	await dp.bot.set_my_commands(commands=command,  scope=BotCommandScopeDefault())
