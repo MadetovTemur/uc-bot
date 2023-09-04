@@ -3,12 +3,12 @@ from aiogram.dispatcher.filters.builtin import CommandStart, CommandHelp, Comman
 
 from loader import dp
 from utils import commands
-
+from keyboards.inlayin import btn_minu, cancel
 
 @dp.message_handler(CommandStart())
 async def bot_start(msg: types.Message):
   await commands.set_default_commands(dp)
-  await msg.answer("Salom")
+  await msg.answer("Salom", replay)
 
 
 
