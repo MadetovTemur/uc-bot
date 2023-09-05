@@ -30,14 +30,14 @@ async def set_commands_admin(dp: Dispatcher):
 		BotCommand(
 			command='orders',
 			description='Ваш заказиы.'
-		),
+		)
 		# BotCommand(
 		# 	command='info',
 		# 	description='Botdan foydalanish qoydasi!'
 		# ),
-		BotCommand(
-			command='bot',
-			description='Информатия о боте.'
-		)
+		# BotCommand(
+		# 	command='bot',
+		# 	description='Информатия о боте.'
+		# )
 	]
 	await dp.bot.set_my_commands(commands=command,  scope=BotCommandScopeDefault())

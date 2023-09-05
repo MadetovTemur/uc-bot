@@ -22,10 +22,10 @@ async def set_default_commands(dp: Dispatcher):
 		BotCommand(
 			command='orders',
 			description='Orderlar royxati.'
-		),
-		BotCommand(
-			command='bot',
-			description='Bot xaqida malumotlar.'
 		)
+		# BotCommand(
+		# 	command='bot',
+		# 	description='Bot xaqida malumotlar.'
+		# )
 	]
 	await dp.bot.set_my_commands(commands=command,  scope=BotCommandScopeDefault())

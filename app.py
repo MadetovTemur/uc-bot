@@ -2,8 +2,8 @@
 
 from aiogram import executor
 
-from loader import dp, db
-import middlewares, filters, handlers.inlayin_handlers as inlayin_handlers
+from loader import dp
+import middlewares, filters, handlers
 from utils import commands
 from utils.notify_admins import (on_startup_notify, on_shutdown_notify)
 

@@ -11,6 +11,12 @@ async def bot_start(msg: types.Message):
   await msg.answer("dmins")
 
 
+@dp.message_handler(CommandStart(), user_id=ADMINS)
+async def bot_starts(msg: types.Message):
+  await commands.set_default_commands(dp)
+  await msg.answer("useris")
+
+
 
 # @dp.message_handler(CommandHelp())
 # async def bot_help(msg: types.Message):
