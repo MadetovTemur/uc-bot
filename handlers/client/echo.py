@@ -2,7 +2,7 @@ from aiogram import types
 from aiogram.dispatcher.filters.builtin import Command
 
 from loader import dp, db
-
+from keyboards.inlayin import btn_minu
 
 
 @dp.message_handler(Command('orders'))

@@ -4,29 +4,29 @@ from aiogram.dispatcher.filters.builtin import CommandStart, CommandHelp, Comman
 from loader import dp, ADMINS
 from utils import commands
 from filters.FiltersBot import IsAdmin
-
-@dp.message_handler(CommandStart(), IsAdmin())
-async def bot_start(msg: types.Message):
-  await commands.set_default_commands(dp)
-  await msg.answer("dmins")
-
+from keyboards.inlayin import btn_minu_admin
 
 @dp.message_handler(CommandStart(), user_id=ADMINS)
-async def bot_starts(msg: types.Message):
-  await commands.set_default_commands(dp)
-  await msg.answer("useris")
+async def bot_start_admin(msg: types.Message):
+  await commands.set_commands_admin(dp)
+  await msg.answer("Assalomu Alekum siz botda adminsiz !", reply_markup=btn_minu_admin)
+
+@dp.message_handler(CommandHelp(), user_id=ADMINS)
+async def bot_help_admin(msg: types.Message):
+  await commands.set_commands_admin(dp)
+  HELP_COMMAND_ADMIN = """
+    <b>/start</b> - <em>Рестарть.</em>
+    <b>/help</b> -- <em>Списка командий.</em>
+    <b>/price</b> -- <em>Сена UC.</em>
+    <b>/users</b> -- <em>Ваш Пользователь.</em>
+    <b>/new_price</b> -- <em>Изменить сена UC..</em>
+    <b>/new_cash</b> -- <em>Заказать UC.</em>
+    <b>/orders</b> -- <em>Ваш заказиы.</em>
+  """
+  await msg.answer(HELP_COMMAND_ADMIN)
 
 
 
-# @dp.message_handler(CommandHelp())
+# @dp.message_handler(CommandHelp(), user_id=ADMINS)
 # async def bot_help(msg: types.Message):
 #   await msg.answer("help")
-
-
-# @dp.message_handler(Command('bot'))
-# async def bot_info(msg: types.Message):
-#   bot = await  dp.bot.get_me()
-#   message :str = f"Bot name {bot.full_name}\
-#     username {bot.username}\
-#     ulr {bot.url}"""
-#   await msg.answer(message)

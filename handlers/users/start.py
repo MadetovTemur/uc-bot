@@ -14,7 +14,6 @@ async def bot_start(msg: types.Message):
 
 @dp.message_handler(CommandHelp())
 async def bot_help(msg: types.Message):
-
   HELP_COMMAND = """
     Bot kamanlar royxati !
     <b>/start</b> -- <em>Bot qayta ishga tushirish.</em>
@@ -24,20 +23,7 @@ async def bot_help(msg: types.Message):
     <b>/orders</b> -- <em>Orderlar royxati.</em>
   """
 
-  HELP_COMMAND_ADMIN = """
-    <b>/start</b> - <em>Рестарть.</em>
-    <b>/help</b> -- <em>Списка командий.</em>
-    <b>/price</b> -- <em>Сена UC.</em>
-    <b>/users</b> -- <em>Пользователь.</em>
-    <b>/new_price</b> -- <em>Изменить сена UC..</em>
-    <b>/new_cash</b> -- <em>Заказать UC.</em>
-    <b>/orders</b> -- <em>Ваш заказиы.</em>
-  """
-
-  if msg.chat.id in ADMINS:
-    await msg.answer(HELP_COMMAND_ADMIN)
-  else:
-    await msg.answer(HELP_COMMAND)
+  await msg.answer(HELP_COMMAND)
 
 
 @dp.message_handler(Command('bot'))

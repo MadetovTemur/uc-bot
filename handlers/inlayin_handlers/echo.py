@@ -6,13 +6,14 @@ from aiogram.dispatcher import  FSMContext
 from states import Input_Uc_count
 
 from loader import dp, db
-from keyboards.inlayin import btn_minu, cancel
-
+from keyboards.inlayin import btn_minu
+from keyboards import uc_btn
 
 @dp.callback_query_handler(text_contains='minu:add_new_order')
 async def cb_menu_add_order(callback: types.CallbackQuery) -> None:
-  to_msg = f"bot"
-  await callback.message.edit_text(to_msg)
+  to_msg = f"UC soni kirgazing"
+  await callback.message.delete()
+  await callback.message.answer(to_msg, reply_markup=uc_btn) # type: ignore
   await Input_Uc_count.price.set()
 
 @dp.callback_query_handler(text_contains='minu:price')
