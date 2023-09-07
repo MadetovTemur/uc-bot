@@ -89,7 +89,14 @@ class DataBazeTelegram:
       self.__cursor__.execute(query)
 
   def echo_orders(self, cash = "FALSE", limit = 3):
-    #  "TRUE	FALSE	No Manay"
+    r"""
+     TRUE = tolnadi
+     FALSE, = Xali admin kormadi
+     No Manay = Pull otgazilmadi
+     No id = Id notogri
+     sleep = Rejim uxi
+    """
+
     query = f"SELECT * FROM `orders` WHERE `cash` = '{cash}' LIMIT {limit}"
     with self.__connection__:
       data = self.__cursor__.execute(query).fetchall()

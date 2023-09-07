@@ -13,6 +13,7 @@ from keyboards import uc_btn
 async def cb_menu_add_order(callback: types.CallbackQuery) -> None:
   to_msg = f"UC soni kirgazing"
   await callback.message.delete()
+  await callback.answer(cache_time=20)
   await callback.message.answer(to_msg, reply_markup=uc_btn) # type: ignore
   await Input_Uc_count.price.set()
 

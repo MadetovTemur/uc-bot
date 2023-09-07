@@ -32,6 +32,17 @@ btn_minu_admin = InlineKeyboardMarkup(row_width=2).add(
     InlineKeyboardButton(text=f"Ваш заказиы. {emojize(':abacus:')}", callback_data="minu:orders"), # type: ignore
     InlineKeyboardButton(text=f"Biz xaqimizda {emojize(':busts_in_silhouette:')}",  callback_data="minu:bot") # type: ignore
   ).add(
-    InlineKeyboardButton(text=f"Ваш Пользователь. {emojize(':abacus:')}", callback_data="minu:orders"), # type: ignore
-    InlineKeyboardButton(text=f"Изменить сена UC {emojize(':busts_in_silhouette:')}",  callback_data="minu:bot") # type: ignore
+    InlineKeyboardButton(text=f"Ваш Пользователь. {emojize(':performing_arts:')}", callback_data="minu:users"), # type: ignore
+    InlineKeyboardButton(text=f"Изменить сена UC {emojize(':writing_hand:')}",  callback_data="minu:edit_price") # type: ignore
   )
+
+
+
+
+def echo_btns(produc_id, id):
+  btns = InlineKeyboardMarkup(row_width=1).add(
+    InlineKeyboardButton(text=f"Оплачень {emojize(':check_mark_button:')}", callback_data=f'order:{produc_id}:true:{id}'), # type: ignore
+    InlineKeyboardButton(text=f"Не правилние id {emojize(':memo:')}", callback_data=f'order:{produc_id}:No id:{id}'), # type: ignore
+    InlineKeyboardButton(text=f"Не перевель деньги {emojize(':money_with_wings:')}", callback_data=f'order:{produc_id}:No maney:{id}') # type: ignore
+  )
+  return btns

@@ -17,7 +17,7 @@ async def bot_info_otders(msg: types.Message):
 @dp.message_handler(Command('price'))
 async def bot_info_price(msg: types.Message):
   data = db.get_curs()
-  to_msg = f"{data[1]}\n"\
-          f"Yangilangan sanasi :{data[2]}ta\n"
+  to_msg = f"{data[2]}\n" # \
+          # f"Yangilangan sanasi :{data[1]}da\n"
 
   await msg.answer(to_msg) # type: ignore
