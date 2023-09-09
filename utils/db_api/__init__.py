@@ -31,6 +31,14 @@ ORDERS = """CREATE TABLE IF NOT EXISTS "orders" (
 	PRIMARY KEY("id" AUTOINCREMENT)
 );"""
 
+ADMIN = """CREATE TABLE IF NOT EXISTS "admins" (
+	"id"	TEXT UNIQUE,
+	"data"	TEXT,
+	"status"	INTEGER NOT NULL DEFAULT 'admin'
+  "deldata"	TEXT DEFAULT NULL
+);
+"""
+
 class DataBazeTelegram:
 
   def __init__(self, db_file: str):
@@ -45,8 +53,28 @@ class DataBazeTelegram:
       self.__cursor__.execute(USERS)
       self.__cursor__.execute(ORDERS)
       self.__cursor__.execute(CURS)
+      # self.__cursor__.execute(ADMIN)
 
-  # ------------------------------------------------------
+  # ----------------------Admin------------------------------
+  def serch_admin_id_bool(self, id) -> bool:
+    with self.__connection__:
+      data = self.__cursor__.execute(f"SELECT * FROM `admins` WHERE `id` = '{id}'").fetchall()
+    return bool(len(data))
+
+  def add_admin(self, id):
+    query = f"""INSERT INTO `admins` (`id`, `data`)
+      VALUES (?, ?)"""
+    if self.serch_admin_id_bool(id):
+      with self.__connection__:
+        self.__cursor__.execute(query, (id, self.today))
+
+  def delete_admin(self, id):
+    query = f"""UPDATE `admins` SET `status` = ?, `deldata` = ? WHERE `id` = ?"""
+    if self.serch_admin_id_bool(id):
+      with self.__connection__:
+        self.__cursor__.execute(query, ('No Admin', self.today, id))
+
+  # ------------------------user------------------------------
   def serch_user_id_bool(self, id) -> bool:
     with self.__connection__:
       data = self.__cursor__.execute(f"SELECT * FROM `users` WHERE `id` = '{id}'").fetchall()
@@ -69,7 +97,7 @@ class DataBazeTelegram:
     with self.__connection__:
       self.__cursor__.execute(query)
 
-  # ------------------------------------------------------
+  # ---------------------------curs---------------------------
   def add_curs(self, text):
     query = f"""INSERT INTO `curs` (`data`, `text`) VALUES ('{self.today}', '{text}') """
     with self.__connection__:
@@ -81,7 +109,7 @@ class DataBazeTelegram:
       data = self.__cursor__.execute(query).fetchone()
     return data
 
-  #  --------------------------------------------------------
+  #  -------------------------order-------------------------------
   def add_order(self, user_id, price, photo, pubg_id):
     query = f"""INSERT INTO `orders` (`user`, `time`, `price`, `photo`, `pubgid`, `cash`)
       VALUES ('{user_id}', '{self.today}', '{price}', '{photo}', '{pubg_id}', 'FALSE') """

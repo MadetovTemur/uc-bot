@@ -5,7 +5,7 @@ from aiogram.dispatcher import  FSMContext
 
 from loader import dp, ADMINS, db
 from states import Input_Uc_price
-from keyboards.inlayin import echo_btns
+from keyboards.inlayin import echo_btns, btn_minu_admin
 
 
 @dp.message_handler(Command('new_price'), user_id=ADMINS)
@@ -17,12 +17,12 @@ async def edit_price(msg: types.Message, state: FSMContext):
 @dp.message_handler(Command('cancel_price'), user_id=ADMINS, state='*')
 async def edit_price_cancel(msg: types.Message, state: FSMContext):
   await state.finish()
-  await msg.answer('Вы отменили Просес добавления новий сена !')
+  await msg.answer('Вы отменили Просес добавления новий сена !', reply_markup=btn_minu_admin)
 
 @dp.message_handler(user_id=ADMINS, state=Input_Uc_price.price)
 async def edit_price_get(msg: types.Message, state: FSMContext):
   db.add_curs(text=msg.text)
-  await msg.answer('Изменения сахранился ')
+  await msg.answer('Изменения сахранился ', reply_markup=btn_minu_admin)
   await state.finish()
 
 # -------------------------------------------------------

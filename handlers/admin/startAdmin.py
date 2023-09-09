@@ -6,10 +6,13 @@ from loader import dp, ADMINS
 from utils import commands
 from keyboards.inlayin import btn_minu_admin
 
+
+
 @dp.message_handler(CommandStart(), user_id=ADMINS)
 async def bot_start_admin(msg: types.Message):
   await commands.set_commands_admin(dp)
-  await msg.answer("Здравствуйте вы админ бота используйте не обходимий каманда или с кнопкамим !", reply_markup=btn_minu_admin)
+  await msg.answer(f"Здравствуйте, {msg.from_user.full_name}! Вы админ бота используйте не обходимий каманда или с кнопкамим !", reply_markup=btn_minu_admin)
+
 
 @dp.message_handler(CommandHelp(), user_id=ADMINS)
 async def bot_help_admin(msg: types.Message):
@@ -26,6 +29,6 @@ async def bot_help_admin(msg: types.Message):
 
 
 
-# @dp.message_handler(CommandHelp(), user_id=ADMINS)
+# @dp.message_handler(user_id=ADMINS)
 # async def bot_help(msg: types.Message):
 #   await msg.answer("help")

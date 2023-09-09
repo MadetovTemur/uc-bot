@@ -5,8 +5,9 @@ from emoji import emojize
 
 
 btn_minu = InlineKeyboardMarkup(row_width=2).add(
-    InlineKeyboardButton(text=f"UC narxlari {emojize(':bar_chart:')}", callback_data="minu:price"), # type: ignore
-    InlineKeyboardButton(text=f"UC Xarid qilish {emojize(':recycling_symbol:')}", callback_data="minu:add_new_order"), # type: ignore
+    InlineKeyboardButton(text=f"UC narxlari {emojize(':bar_chart:')}", callback_data="minu:price") # type: ignore
+  ).add(
+    InlineKeyboardButton(text=f"UC Xarid qilish {emojize(':recycling_symbol:')}", callback_data="minu:add_new_order") # type: ignore
   ).add(
     InlineKeyboardButton(text=f"Orderlar royxati {emojize(':abacus:')}", callback_data="minu:orders"), # type: ignore
     InlineKeyboardButton(text=f"Biz xaqimizda {emojize(':busts_in_silhouette:')}",  callback_data="minu:bot") # type: ignore

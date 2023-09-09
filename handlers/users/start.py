@@ -8,7 +8,8 @@ from keyboards.inlayin import btn_minu
 @dp.message_handler(CommandStart())
 async def bot_start(msg: types.Message):
   await commands.set_default_commands(dp)
-  await msg.answer("Salom botdan foydalanishingiz mukun", reply_markup=btn_minu)
+  to_msg = f"Salom, {msg.from_user.full_name}! Botdan faydalanish uchun tugmalardan faydalanig"
+  await msg.answer(to_msg, reply_markup=btn_minu)
 
 
 
@@ -28,8 +29,9 @@ async def bot_help(msg: types.Message):
 
 @dp.message_handler(Command('bot'))
 async def bot_info(msg: types.Message):
-  bot = await  dp.bot.get_me()
-  message :str = f"Bot name {bot.full_name}\
-    username {bot.username}\
-    ulr {bot.url}"""
+  bot_info = await  dp.bot.get_me()
+  message :str = f"Bot name: {bot_info.full_name}\
+    Username: {bot_info.username}\
+    Url bot: {bot_info.url} \
+    Version: 1.10"""
   await msg.answer(message)

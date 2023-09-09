@@ -10,4 +10,4 @@ uc_btn = ReplyKeyboardMarkup(keyboard=[
   [
     KeyboardButton(i) for i in is_count_uc2 # type: ignore
   ]
-], row_width=4, resize_keyboard=True, one_time_keyboard=True, input_field_placeholder='Uc soni saylang !')
+], row_width=4, resize_keyboard=True, one_time_keyboard=True, input_field_placeholder='UC soni saylang !')

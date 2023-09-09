@@ -13,7 +13,7 @@ async def set_default_commands(dp: Dispatcher):
 		),
 		BotCommand(
 			command='price',
-			description='Us narxlari.'
+			description='UC narxlari.'
 		),
 		BotCommand(
 			command='add_new_order',
